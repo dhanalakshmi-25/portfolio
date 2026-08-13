@@ -12,6 +12,9 @@
 </head>
 <body>
 
+<div class="grain" aria-hidden="true"></div>
+<div class="spotlight" id="spotlight" aria-hidden="true"></div>
+<div class="progress-bar" id="progressBar"></div>
 <div class="bg-glow"></div>
 
 <nav class="navbar">
@@ -28,10 +31,11 @@
 </nav>
 
 <header class="hero" id="home">
-  <div class="container hero-grid">
+  <span class="hero-index">EST. 2022 — BENGALURU</span>
+  <div class="hero-inner">
     <div class="hero-text reveal">
       <p class="eyebrow">Backend Software Engineer</p>
-      <h1>Dhanalakshmi&nbsp;D&nbsp;K</h1>
+      <h1>Dhanalakshmi<br>D&nbsp;K</h1>
       <p class="subtitle">I design and build <span class="hl">high-throughput, fault-tolerant backend systems</span> for fintech and e-commerce — sharded databases, event-driven microservices, and payment infrastructure that holds up under real traffic.</p>
       <div class="cta-row">
         <a href="#projects" class="btn btn-primary">View Work</a>
@@ -43,20 +47,31 @@
         <a href="mailto:dhanalakshmidk7@gmail.com" aria-label="Email">Email</a>
       </div>
     </div>
-    <div class="hero-photo reveal">
-      <div class="photo-ring">
-        <img src="profile.jpg" alt="Dhanalakshmi D K">
-      </div>
+    <div class="hero-photo-panel reveal">
+      <img src="profile-full.jpg" alt="Dhanalakshmi D K">
+      <div class="tint-overlay"></div>
+      <div class="fade-left"></div>
+      <div class="fade-bottom"></div>
+      <span class="photo-caption">// building payment infra at Paywize</span>
     </div>
   </div>
 
-  <div class="stats-bar container reveal">
-    <div class="stat"><span class="stat-num">3+</span><span class="stat-label">Years Experience</span></div>
-    <div class="stat"><span class="stat-num">3x</span><span class="stat-label">Traffic Scaled via Sharding</span></div>
-    <div class="stat"><span class="stat-num">40%</span><span class="stat-label">Query Latency Reduced</span></div>
-    <div class="stat"><span class="stat-num">4</span><span class="stat-label">Production Platforms Shipped</span></div>
-  </div>
+  <div class="scroll-cue reveal" aria-hidden="true"><span></span>Scroll</div>
 </header>
+
+<div class="marquee reveal" aria-hidden="true">
+  <div class="marquee-track">
+    <span>NestJS</span><span>TypeScript</span><span>PostgreSQL</span><span>Redis</span><span>Microservices</span><span>Docker</span><span>Kubernetes</span><span>AWS</span><span>Database Sharding</span><span>System Design</span>
+    <span>NestJS</span><span>TypeScript</span><span>PostgreSQL</span><span>Redis</span><span>Microservices</span><span>Docker</span><span>Kubernetes</span><span>AWS</span><span>Database Sharding</span><span>System Design</span>
+  </div>
+</div>
+
+<div class="stats-bar container reveal">
+  <div class="stat"><span class="stat-num">3+</span><span class="stat-label">Years Experience</span></div>
+  <div class="stat"><span class="stat-num">3x</span><span class="stat-label">Traffic Scaled via Sharding</span></div>
+  <div class="stat"><span class="stat-num">40%</span><span class="stat-label">Query Latency Reduced</span></div>
+  <div class="stat"><span class="stat-num">4</span><span class="stat-label">Production Platforms Shipped</span></div>
+</div>
 
 <main class="container">
 
@@ -273,6 +288,20 @@
     });
   }, { threshold: 0.12 });
   revealEls.forEach(el => io.observe(el));
+
+  const progressBar = document.getElementById('progressBar');
+  window.addEventListener('scroll', () => {
+    const h = document.documentElement;
+    const scrolled = (h.scrollTop / (h.scrollHeight - h.clientHeight)) * 100;
+    progressBar.style.width = scrolled + '%';
+  }, { passive: true });
+
+  if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+    document.addEventListener('mousemove', (e) => {
+      document.documentElement.style.setProperty('--x', e.clientX + 'px');
+      document.documentElement.style.setProperty('--y', e.clientY + 'px');
+    }, { passive: true });
+  }
 </script>
 </body>
 </html>
